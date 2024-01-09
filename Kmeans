@@ -44,27 +44,6 @@ optimal_clusters = np.argmin(np.diff(np.diff(inertia))) + 2
 # Display the optimal number of clusters
 print(optimal_clusters)
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
-import numpy as np
-from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score, silhouette_samples
-from sklearn.decomposition import PCA
-
-# Re-importing and re-preprocessing the dataset due to environment reset
-file_path = 'desktop/kmeans.csv'
-data = pd.read_csv(file_path)
-
-# Remove highly correlated features
-correlation_matrix = data.corr().abs()
-high_correlation = np.where(correlation_matrix == 1)
-high_correlation = [(correlation_matrix.columns[x], correlation_matrix.columns[y])
-                    for x, y in zip(*high_correlation) if x != y and x < y]
-
-for col1, col2 in high_correlation:
-    data.drop(col2, axis=1, inplace=True)
 
 # Standardizing the data
 scaler = StandardScaler()
@@ -82,17 +61,6 @@ clusters = kmeans.fit_predict(data_pca)
 # Adding the cluster labels to the original data
 data['Cluster'] = clusters
 
-# Silhouette Score
-silhouette_avg = silhouette_score(data_pca, clusters)
-print(f'Silhouette Score: {silhouette_avg}')
-
-# Calinski-Harabasz Index
-calinski_harabasz = calinski_harabasz_score(data_pca, clusters)
-print(f'Calinski-Harabasz Index: {calinski_harabasz}')
-
-# Davies-Bouldin Index
-davies_bouldin = davies_bouldin_score(data_pca, clusters)
-print(f'Davies-Bouldin Index: {davies_bouldin}')
 
 # Scatter plot of the two principal components colored by cluster label
 plt.figure(figsize=(10, 6))
@@ -126,14 +94,7 @@ plt.title('Heatmap of Cluster Means')
 plt.ylabel('Cluster')
 plt.show()
 
-# Calculate Silhouette scores for each sample
-silhouette_vals = silhouette_samples(data_pca, clusters)
 
-# Averaging Silhouette scores for each cluster
-for i in range(optimal_clusters):
-    cluster_silhouette_vals = silhouette_vals[clusters == i]
-    cluster_avg_silhouette = np.mean(cluster_silhouette_vals)
-    print(f'Cluster {i} Average Silhouette Score: {cluster_avg_silhouette}')
 
 clustered_data = pd.read_csv(file_path)
 
@@ -182,9 +143,27 @@ sse_df = pd.DataFrame({
 
 print(sse_df)
 
+# Silhouette Score
+silhouette_avg = silhouette_score(data_pca, clusters)
+print(f'Silhouette Score: {silhouette_avg}')
+
+# Calinski-Harabasz Index
+calinski_harabasz = calinski_harabasz_score(data_pca, clusters)
+print(f'Calinski-Harabasz Index: {calinski_harabasz}')
+
+# Davies-Bouldin Index
+davies_bouldin = davies_bouldin_score(data_pca, clusters)
+print(f'Davies-Bouldin Index: {davies_bouldin}')
 
 
+# Calculate Silhouette scores for each sample
+silhouette_vals = silhouette_samples(data_pca, clusters)
 
+# Averaging Silhouette scores for each cluster
+for i in range(optimal_clusters):
+    cluster_silhouette_vals = silhouette_vals[clusters == i]
+    cluster_avg_silhouette = np.mean(cluster_silhouette_vals)
+    print(f'Cluster {i} Average Silhouette Score: {cluster_avg_silhouette}')
 
 
 
