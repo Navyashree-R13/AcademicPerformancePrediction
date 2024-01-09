@@ -4,7 +4,7 @@ Students performace prediction is a crucial aspect in the world of education.
 
 In this project students are clustered based on their academic performance using K-means clustering algorithm and the results are validates using Silhouette score, Calinski-Harabasz and Davies-Bouldin Index.
 <br><br>
-Below are some of the visualizations on the Dataset:
+Below are some of the visualizations on the Dataset: Descriptive Statistics Charts (https://github.com/Navyashree-R13/AcademicPerformancePrediction/blob/main/descriptiveStats_Charts)
 <br><br>
 <img src= https://github.com/Navyashree-R13/AcademicPerformancePrediction/assets/73741300/b45a4827-0dc2-439d-b57a-9fde9f25b8ba width="400" height="300">
 <img src= https://github.com/Navyashree-R13/AcademicPerformancePrediction/assets/73741300/582e035a-aa97-46fc-aaa4-b40d817fa0c4 width="400" height="300" hspace="8">
