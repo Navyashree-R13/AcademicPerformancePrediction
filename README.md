@@ -23,7 +23,7 @@ Below are some of the visualizations on the Dataset: Descriptive Statistics Char
 
 
 
-Below are some of the visualizations from K-means Clustering:
+Below are some of the visualizations from K-means Clustering: K-Means Outcome (https://github.com/Navyashree-R13/AcademicPerformancePrediction/blob/main/Kmeans)
 <br><br>
 <img src=https://github.com/Navyashree-R13/AcademicPerformancePrediction/assets/73741300/431ef6a4-e78a-45e9-84ac-f5a043c8d3cf width="400" height="300">
 <img src=https://github.com/Navyashree-R13/AcademicPerformancePrediction/assets/73741300/6f3c0178-300b-40cc-af07-80b42c47cf6b width="400" height="300" hspace="8">
